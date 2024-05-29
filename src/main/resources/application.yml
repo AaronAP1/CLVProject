@@ -1,0 +1,20 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://viaduct.proxy.rlwy.net:52442/railway
+    username: root
+    password: ciyCOImKEJgroGJxBQXAsgGrhPPkaAEP
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+  security:
+    user:
+      name: root
+      password: root
