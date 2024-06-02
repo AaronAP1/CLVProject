@@ -22,7 +22,9 @@ public class ClvProjectApplication {
         @Override
         public void addCorsMappings(CorsRegistry registry) {
             registry.addMapping("/**")
-                    .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
+                    .allowedOrigins("*") // Permitir solicitudes desde este origen
+                    .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH")
+                    .allowedHeaders("*"); // Permitir todos los encabezados
         }
     }
 }
