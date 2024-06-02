@@ -27,6 +27,11 @@ public class ClienteSrvImp implements ClienteService {
     }
 
     @Override
+    public List<Clientes> findByCodigopago(int codigopago) {
+        return cli.findByCodigopago(codigopago);
+    }
+
+    @Override
     public Clientes createCliente(Clientes cliente) {
         return cli.save(cliente);
     }

@@ -14,7 +14,7 @@ public class Clientes {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idcliente;
-    private String codigopago;
+    private int codigopago;
     private String asesor;
     private String mzlts;
     private String captacion;

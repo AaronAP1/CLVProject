@@ -27,6 +27,11 @@ public class CobrosSrvImp implements CobrosService {
     }
 
     @Override
+    public List<Cobros> findByCodigopago(int codigopago) {
+        return co.findByCodigopago(codigopago);
+    }
+
+    @Override
     public Cobros createCobros(Cobros cobros) {
         return co.save(cobros);
     }

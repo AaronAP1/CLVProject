@@ -27,6 +27,12 @@ public class ClienteController {
         return clienteService.readClienteById(idcliente);
     }
 
+    @GetMapping("/buscar/cod/{codigopago}")
+    public List<Clientes> getClienteByCodigopa(@PathVariable int codigopago) {
+        return clienteService.findByCodigopago(codigopago);
+    }
+
+
     @GetMapping("/crear")
     public Clientes create(@RequestBody Clientes cliente) {
         return clienteService.createCliente(cliente);

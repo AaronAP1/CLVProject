@@ -28,6 +28,11 @@ public class PagosSrvImp implements PagosService {
     }
 
     @Override
+    public List<Pagos> findByCodigopago(int codigopago) {
+        return pa.findByCodigopago(codigopago);
+    }
+
+    @Override
     public Pagos createPago(Pagos pago) {
         return pa.save(pago);
     }

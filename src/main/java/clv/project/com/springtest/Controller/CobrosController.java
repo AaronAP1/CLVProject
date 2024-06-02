@@ -27,6 +27,11 @@ public class CobrosController {
         return cobrosService.readCobrosById(idcobros);
     }
 
+    @GetMapping("/buscar/cod/{codigopago}")
+    public List<Cobros> getCobrosByCodigo(@PathVariable int codigopago) {
+        return cobrosService.findByCodigopago(codigopago);
+    }
+
     @GetMapping("/crear")
     public Cobros create(@RequestBody Cobros cobros) {
         return cobrosService.createCobros(cobros);

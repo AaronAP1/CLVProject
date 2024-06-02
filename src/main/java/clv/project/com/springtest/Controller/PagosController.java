@@ -27,6 +27,11 @@ public class PagosController {
         return pagosService.readById(idpagos);
     }
 
+    @GetMapping("/buscar/cod/{codigopago}")
+    public List<Pagos> getPagosByCodigo(@PathVariable int codigopago){
+        return pagosService.findByCodigopago(codigopago);
+    }
+
     @GetMapping("/crear")
     public Pagos create(@RequestBody Pagos pagos){
         return pagosService.createPago(pagos);

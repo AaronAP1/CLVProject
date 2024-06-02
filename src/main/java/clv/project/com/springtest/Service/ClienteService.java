@@ -9,6 +9,7 @@ public interface ClienteService {
 
     List<Clientes> readAllCliente();
     Optional<Clientes> readClienteById(int idcliente);
+    List<Clientes> findByCodigopago(int codigopago);
     Clientes createCliente(Clientes cliente);
     Clientes updateCliente(int idcliente, Clientes cliente);
     void deleteCliente(int idcliente);

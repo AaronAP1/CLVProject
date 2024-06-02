@@ -10,6 +10,7 @@ public interface PagosService {
 
     List<Pagos> readAllPagos();
     Optional<Pagos> readById(int idpagos);
+    List<Pagos> findByCodigopago(int codigopago);
     Pagos createPago(Pagos pago);
     Pagos updatePago(int idpagos, Pagos pago);
     void deletePago(int idpagos);

@@ -12,6 +12,7 @@ public class Cobros {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idcobros;
+    private int codigopago;
     private String recibo;
     private String descripcionrecibo;
     private String pagado;

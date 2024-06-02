@@ -10,6 +10,7 @@ public interface CobrosService {
 
     List<Cobros> readAllCobros();
     Optional<Cobros> readCobrosById(int idcobros);
+    List<Cobros> findByCodigopago(int codigopago);
     Cobros createCobros(Cobros cobros);
     Cobros updateCobros(int idcobros, Cobros cobros);
     void deleteCobros(int idcobros);
