@@ -37,4 +37,10 @@ public class Clientes {
     private int coutamensual;
     private String comentario;
 
+    public void setNombre(String nuevoNombre) {
+    }
+
+    public String getNombre() {
+        return "";
+    }
 }

@@ -18,6 +18,8 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -67,7 +69,7 @@ public class AuthControllerTest {
     @Test
     public void testRegister() throws Exception {
         // Mocking del servicio de registro
-        RegisterRequest registerRequest = new RegisterRequest("user10", "password", "12345");
+        RegisterRequest registerRequest = new RegisterRequest("user20", "password", "12345", "USER");
         AuthResponse expectedResponse = new AuthResponse("testtoken");
 
         when(authService.register(any(RegisterRequest.class))).thenReturn(expectedResponse);
@@ -82,6 +84,10 @@ public class AuthControllerTest {
 
         // Verificar Respuesta
         AuthResponse response = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), AuthResponse.class);
-        assert response.getToken().equals(expectedResponse.getToken());
+
+        // Verificar que la respuesta no es nula y tiene el token esperado
+        assertNotNull(response);
+        assertNotNull(response.getToken());
+        assertEquals(expectedResponse.getToken(), response.getToken());
     }
 }

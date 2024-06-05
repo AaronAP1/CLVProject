@@ -16,4 +16,7 @@ public class RegisterRequest {
    private String password;
    private String codigodepagoL;
    private Rol rol;
+
+    public RegisterRequest(String user10, String password, String number, String user) {
+    }
 }
