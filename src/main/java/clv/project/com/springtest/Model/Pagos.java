@@ -13,6 +13,7 @@ public class Pagos {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idpagos;
     private int codigopago;
+    private String recibido;
     private String descripcion;
     private String importe;
     private String vencimiento;
