@@ -25,8 +25,15 @@ public class AuthService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
         UserDetails user=userRepository.findByUsername(loginRequest.getUsername()).orElseThrow();
         String token=jwtService.getToken(user);
+        String rol = ((User) user).getRol().name();
+        String codigodepagoL = ((User) user).getCodigodepagoL();
+        String usuario = ((User) user).getUsername();
+
         return AuthResponse.builder()
                 .token(token)
+                .rol(rol)
+                .codigodepagoL(codigodepagoL)
+                .Usuario(usuario)
                 .build();
     }
 
@@ -35,7 +42,7 @@ public class AuthService {
                 .username(registerRequest.getUsername())
                 .password(passwordEncoder.encode( registerRequest.getPassword()))
                 .codigodepagoL(registerRequest.getCodigodepagoL())
-                .rol(Rol.USER)
+                .rol(registerRequest.getRol())
                 .build();
         userRepository.save(user);
 
