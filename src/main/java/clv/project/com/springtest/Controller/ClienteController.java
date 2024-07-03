@@ -33,7 +33,7 @@ public class ClienteController {
     }
 
 
-    @GetMapping("/crear")
+    @PostMapping("/crear")
     public Clientes create(@RequestBody Clientes cliente) {
         return clienteService.createCliente(cliente);
     }

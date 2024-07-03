@@ -32,7 +32,7 @@ public class CobrosController {
         return cobrosService.findByCodigopago(codigopago);
     }
 
-    @GetMapping("/crear")
+    @PostMapping("/crear")
     public Cobros create(@RequestBody Cobros cobros) {
         return cobrosService.createCobros(cobros);
     }

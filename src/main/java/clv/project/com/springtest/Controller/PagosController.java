@@ -3,6 +3,7 @@ package clv.project.com.springtest.Controller;
 
 import clv.project.com.springtest.Model.Pagos;
 import clv.project.com.springtest.Service.PagosService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,28 +19,38 @@ public class PagosController {
     PagosService pagosService;
 
     @GetMapping("/listar")
-    public List<Pagos> getAllPagos(){
+    @CircuitBreaker(name = "pagosService", fallbackMethod = "fallback")
+    public List<Pagos> getAllPagos() {
         return pagosService.readAllPagos();
     }
 
     @GetMapping("/buscar/{idpagos}")
-    public Optional<Pagos> getPagosById(@PathVariable int idpagos){
+    @CircuitBreaker(name = "pagosService", fallbackMethod = "fallback")
+    public Optional<Pagos> getPagosById(@PathVariable int idpagos) {
         return pagosService.readById(idpagos);
     }
 
     @GetMapping("/buscar/cod/{codigopago}")
-    public List<Pagos> getPagosByCodigo(@PathVariable int codigopago){
+    @CircuitBreaker(name = "pagosService", fallbackMethod = "fallback")
+    public List<Pagos> getPagosByCodigo(@PathVariable int codigopago) {
         return pagosService.findByCodigopago(codigopago);
     }
 
-    @GetMapping("/crear")
-    public Pagos create(@RequestBody Pagos pagos){
+    @PostMapping("/crear")
+    @CircuitBreaker(name = "pagosService", fallbackMethod = "fallback")
+    public Pagos create(@RequestBody Pagos pagos) {
         return pagosService.createPago(pagos);
     }
 
     @DeleteMapping("/borrar/{idpagos}")
-    public void delete(@PathVariable int idpagos){
+    @CircuitBreaker(name = "pagosService", fallbackMethod = "fallback")
+    public void delete(@PathVariable int idpagos) {
         pagosService.deletePago(idpagos);
     }
 
+    // Fallback method
+    public List<Pagos> fallback(Throwable t) {
+        // Implementa un fallback apropiado aquí
+        return null;
+    }
 }
